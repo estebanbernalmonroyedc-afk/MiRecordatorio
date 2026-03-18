@@ -24,12 +24,12 @@ MiRecordatorio es una aplicación móvil que permite a los usuarios crear, visua
 
 Los diseños iniciales de la interfaz se encuentran en la carpeta **mockups/**.
 
-## Mockups
+## Notas importantes
 
 Es importante usar Python 3.11, ya que versiones más recientes (como 3.14) pueden generar errores con Kivy.
 
 Los recordatorios se almacenan en el archivo:
-**codigo/recordatorios.json/**.
+**codigo/recordatorios.json/**
 
 Para iniciar la aplicación ejecuta:
 
@@ -37,7 +37,7 @@ Para iniciar la aplicación ejecuta:
 
 ## Capturas de la aplicación
 
-Las capturas del funcionamiento de la aplicación están en **capturas_ui/**.
+Las capturas del funcionamiento de la aplicación están en **capturas_ui/**
 
 ## Autor
 
