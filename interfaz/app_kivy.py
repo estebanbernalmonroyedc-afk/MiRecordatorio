@@ -8,6 +8,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.uix.scrollview import ScrollView
+from kivy.graphics import Color, Rectangle
 
 from codigo.main import crear_recordatorio, cargar_recordatorios, eliminar_recordatorio
 
@@ -15,49 +17,123 @@ from codigo.main import crear_recordatorio, cargar_recordatorios, eliminar_recor
 class Pantalla(BoxLayout):
 
     def __init__(self, **kwargs):
-        super().__init__(orientation="vertical", **kwargs)
+        super().__init__(orientation="vertical", padding=15, spacing=12, **kwargs)
 
-        # Inputs
-        self.titulo = TextInput(hint_text="Titulo")
-        self.add_widget(self.titulo)
+        # ===== FONDO =====
+        with self.canvas.before:
+            Color(0.94, 0.95, 0.97, 1)  # gris suave moderno
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+        self.bind(size=self._update_rect, pos=self._update_rect)
 
-        self.descripcion = TextInput(hint_text="Descripcion")
-        self.add_widget(self.descripcion)
+        # ===== TITULO =====
+        titulo_app = Label(
+            text="MiRecordatorio",
+            font_size=26,
+            bold=True,
+            size_hint=(1, 0.1),
+            color=(0.1, 0.1, 0.1, 1)
+        )
+        self.add_widget(titulo_app)
 
-        self.fecha = TextInput(hint_text="Fecha (YYYY-MM-DD)")
-        self.add_widget(self.fecha)
+        # ===== FORMULARIO =====
+        form = BoxLayout(orientation="vertical", spacing=8, size_hint=(1, 0.45))
 
-        self.hora = TextInput(hint_text="Hora (HH:MM)")
-        self.add_widget(self.hora)
+        self.titulo = TextInput(
+            hint_text="Título",
+            multiline=False,
+            background_color=(1,1,1,1),
+            foreground_color=(0,0,0,1)
+        )
+        form.add_widget(self.titulo)
 
-        # Botón guardar
-        boton = Button(text="Guardar recordatorio")
+        self.descripcion = TextInput(
+            hint_text="Descripción",
+            multiline=False,
+            background_color=(1,1,1,1),
+            foreground_color=(0,0,0,1)
+        )
+        form.add_widget(self.descripcion)
+
+        self.fecha = TextInput(
+            hint_text="Fecha (YYYY-MM-DD)",
+            multiline=False,
+            background_color=(1,1,1,1),
+            foreground_color=(0,0,0,1)
+        )
+        form.add_widget(self.fecha)
+
+        self.hora = TextInput(
+            hint_text="Hora (HH:MM)",
+            multiline=False,
+            background_color=(1,1,1,1),
+            foreground_color=(0,0,0,1)
+        )
+        form.add_widget(self.hora)
+
+        boton = Button(
+            text="Guardar",
+            size_hint=(1, 0.3),
+            background_color=(0.2, 0.5, 1, 1)
+        )
         boton.bind(on_press=self.guardar)
-        self.add_widget(boton)
+        form.add_widget(boton)
 
-        # Lista de recordatorios
-        self.lista = Label(text="")
-        self.add_widget(self.lista)
+        self.add_widget(form)
 
-        # Input para eliminar
-        self.indice_eliminar = TextInput(hint_text="Número a eliminar")
-        self.add_widget(self.indice_eliminar)
+        # ===== LISTA =====
+        subtitulo = Label(
+            size_hint=(1, 0.08),
+            color=(0.2, 0.2, 0.2, 1)
+        )
+        self.add_widget(subtitulo)
 
-        # Botón eliminar
-        boton_eliminar = Button(text="Eliminar recordatorio")
+        scroll = ScrollView(size_hint=(1, 0.25))
+
+        self.lista = Label(
+            size_hint_y=None,
+            markup=True,
+            color=(0, 0, 0, 1)
+        )
+        self.lista.bind(texture_size=self.lista.setter('size'))
+
+        scroll.add_widget(self.lista)
+        self.add_widget(scroll)
+
+        # ===== ELIMINAR =====
+        eliminar_box = BoxLayout(size_hint=(1, 0.15), spacing=8)
+
+        self.indice_eliminar = TextInput(
+            hint_text="Número a eliminar",
+            multiline=False,
+            background_color=(1,1,1,1),
+            foreground_color=(0,0,0,1)
+        )
+        eliminar_box.add_widget(self.indice_eliminar)
+
+        boton_eliminar = Button(
+            text="Eliminar",
+            background_color=(1, 0.3, 0.3, 1)
+        )
         boton_eliminar.bind(on_press=self.eliminar)
-        self.add_widget(boton_eliminar)
+        eliminar_box.add_widget(boton_eliminar)
 
-        # Mostrar al iniciar
+        self.add_widget(eliminar_box)
+
+        # Mostrar datos
         self.mostrar_recordatorios()
+
+    def _update_rect(self, *args):
+        self.rect.pos = self.pos
+        self.rect.size = self.size
 
     def mostrar_recordatorios(self):
         recordatorios = cargar_recordatorios()
 
-        texto = ""
+        texto = "[b]Recordatorios:[/b]\n\n"
 
         for i, r in enumerate(recordatorios):
-            texto += f"{i+1}. {r['titulo']} - {r['fecha']} {r['hora']}\n"
+            texto += f"[b]{i+1}.[/b] {r['titulo']}\n"
+            texto += f"{r['fecha']} {r['hora']}\n\n"
 
         self.lista.text = texto
 
@@ -69,8 +145,6 @@ class Pantalla(BoxLayout):
             self.fecha.text,
             self.hora.text
         )
-
-        print("Recordatorio guardado")
 
         # Limpiar campos
         self.titulo.text = ""
@@ -84,8 +158,6 @@ class Pantalla(BoxLayout):
         try:
             indice = int(self.indice_eliminar.text) - 1
             eliminar_recordatorio(indice)
-
-            print("Recordatorio eliminado")
 
             self.indice_eliminar.text = ""
 
