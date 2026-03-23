@@ -21,7 +21,7 @@ class Pantalla(BoxLayout):
 
         # ===== FONDO =====
         with self.canvas.before:
-            Color(0.94, 0.95, 0.97, 1)  # gris suave moderno
+            Color(0.94, 0.95, 0.97, 1)
             self.rect = Rectangle(size=self.size, pos=self.pos)
         self.bind(size=self._update_rect, pos=self._update_rect)
 
@@ -38,36 +38,16 @@ class Pantalla(BoxLayout):
         # ===== FORMULARIO =====
         form = BoxLayout(orientation="vertical", spacing=8, size_hint=(1, 0.45))
 
-        self.titulo = TextInput(
-            hint_text="Título",
-            multiline=False,
-            background_color=(1,1,1,1),
-            foreground_color=(0,0,0,1)
-        )
+        self.titulo = TextInput(hint_text="Título", multiline=False)
         form.add_widget(self.titulo)
 
-        self.descripcion = TextInput(
-            hint_text="Descripción",
-            multiline=False,
-            background_color=(1,1,1,1),
-            foreground_color=(0,0,0,1)
-        )
+        self.descripcion = TextInput(hint_text="Descripción", multiline=False)
         form.add_widget(self.descripcion)
 
-        self.fecha = TextInput(
-            hint_text="Fecha (YYYY-MM-DD)",
-            multiline=False,
-            background_color=(1,1,1,1),
-            foreground_color=(0,0,0,1)
-        )
+        self.fecha = TextInput(hint_text="Fecha (YYYY-MM-DD)", multiline=False)
         form.add_widget(self.fecha)
 
-        self.hora = TextInput(
-            hint_text="Hora (HH:MM)",
-            multiline=False,
-            background_color=(1,1,1,1),
-            foreground_color=(0,0,0,1)
-        )
+        self.hora = TextInput(hint_text="Hora (HH:MM)", multiline=False)
         form.add_widget(self.hora)
 
         boton = Button(
@@ -104,9 +84,7 @@ class Pantalla(BoxLayout):
 
         self.indice_eliminar = TextInput(
             hint_text="Número a eliminar",
-            multiline=False,
-            background_color=(1,1,1,1),
-            foreground_color=(0,0,0,1)
+            multiline=False
         )
         eliminar_box.add_widget(self.indice_eliminar)
 
@@ -133,7 +111,12 @@ class Pantalla(BoxLayout):
 
         for i, r in enumerate(recordatorios):
             texto += f"[b]{i+1}.[/b] {r['titulo']}\n"
-            texto += f"{r['fecha']} {r['hora']}\n\n"
+
+            # DESCRIPCIÓN (ahora sí se muestra)
+            if r['descripcion']:
+                texto += f"[color=555555]   📝 {r['descripcion']}[/color]\n"
+
+            texto += f"   📅 {r['fecha']} ⏰ {r['hora']}\n\n"
 
         self.lista.text = texto
 
