@@ -1,37 +1,58 @@
-import json
+import mysql.connector
 
-archivo = "recordatorios.json"
+def conectar():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",  
+        database="mirecordatorio"
+    )
 
+# ===== LEER =====
 def cargar_recordatorios():
-    try:
-        with open(archivo,"r") as f:
-            return json.load(f)
-    except:
-        return []
+    conexion = conectar()
+    cursor = conexion.cursor(dictionary=True)
 
-def guardar_recordatorios(datos):
-    with open(archivo,"w") as f:
-        json.dump(datos,f,indent=4)
+    cursor.execute("SELECT * FROM recordatorios")
+    datos = cursor.fetchall()
 
-def crear_recordatorio(titulo,descripcion,fecha,hora):
+    conexion.close()
+    return datos
 
-    recordatorios=cargar_recordatorios()
+# ===== CREAR =====
+def crear_recordatorio(titulo, descripcion, fecha, hora):
+    conexion = conectar()
+    cursor = conexion.cursor()
 
-    nuevo={
-        "titulo":titulo,
-        "descripcion":descripcion,
-        "fecha":fecha,
-        "hora":hora
-    }
+    sql = """
+    INSERT INTO recordatorios (titulo, descripcion, fecha, hora)
+    VALUES (%s, %s, %s, %s)
+    """
 
-    recordatorios.append(nuevo)
-    guardar_recordatorios(recordatorios)
+    cursor.execute(sql, (titulo, descripcion, fecha, hora))
+    conexion.commit()
+    conexion.close()
 
-def eliminar_recordatorio(indice):
+# ===== ELIMINAR =====
+def eliminar_recordatorio(id_recordatorio):
+    conexion = conectar()
+    cursor = conexion.cursor()
 
-    recordatorios=cargar_recordatorios()
+    cursor.execute("DELETE FROM recordatorios WHERE id = %s", (id_recordatorio,))
+    conexion.commit()
+    conexion.close()
 
-    if indice<len(recordatorios):
+# ===== EDITAR =====
+def editar_recordatorio(id_recordatorio, titulo, descripcion, fecha, hora):
+    conexion = conectar()
+    cursor = conexion.cursor()
 
-        recordatorios.pop(indice)
-        guardar_recordatorios(recordatorios)
+    sql = """
+    UPDATE recordatorios
+    SET titulo=%s, descripcion=%s, fecha=%s, hora=%s
+    WHERE id=%s
+    """
+
+    cursor.execute(sql, (titulo, descripcion, fecha, hora, id_recordatorio))
+    conexion.commit()
+    conexion.close()
