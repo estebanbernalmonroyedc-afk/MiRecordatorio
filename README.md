@@ -1,52 +1,78 @@
-# MiRecordatorio 
+MiRecordatorio
+Descripción
+MiRecordatorio es una aplicación de escritorio que permite a los usuarios crear, visualizar, editar y eliminar recordatorios con fecha y hora. Su objetivo es ayudar a organizar tareas diarias de forma sencilla e intuitiva.
 
-## Descripción
+Funcionalidades
+Crear recordatorios
 
-MiRecordatorio es una aplicación móvil que permite a los usuarios crear, visualizar, editar y eliminar recordatorios con fecha y hora. El sistema también permite generar notificaciones automáticas para recordar tareas importantes.
+Editar recordatorios
 
-## Funcionalidades
+Eliminar recordatorios
 
-* Crear recordatorios
-* Editar recordatorios
-* Eliminar recordatorios
-* Visualizar recordatorios
-* Notificaciones automáticas
+Visualizar recordatorios
 
-## Tecnologías utilizadas
+Gestión de tareas con fecha y hora
 
-* Python
-* Kivy
-* JSON
-* Visual Studio Code
-* GitHub
+Tecnologías utilizadas
+Python 3.11
 
-## Mockups
+Kivy 2.3.1
 
-Los diseños iniciales de la interfaz se encuentran en la carpeta **mockups/**.
+MySQL (MariaDB / XAMPP)
 
-## Notas importantes
+mysql-connector-python
 
-Es importante usar Python 3.11, ya que versiones más recientes (como 3.14) pueden generar errores con Kivy.
+Visual Studio Code
 
-Los recordatorios se almacenan en el archivo:
-**codigo/recordatorios.json/**
+GitHub
 
-Para iniciar la aplicación ejecuta:
+Requisitos del sistema
+Tener instalado Python 3.11
 
-    py -3.11 interfaz/app_kivy.py
+Tener instalado MySQL o XAMPP con el servicio activo
 
-## Capturas de la aplicación
+Tener instalada la librería:
 
-Las capturas del funcionamiento de la aplicación están en **capturas_ui/**
+pip install kivy mysql-connector-python
+Configuración de la base de datos
+Servidor: localhost
 
-## Autor
+Puerto: 3306
 
+Base de datos: mirecordatorio
+
+Tabla: recordatorios
+
+Es importante que el servidor MySQL esté encendido, de lo contrario la aplicación no funcionará.
+
+Ejecución del proyecto
+Para iniciar la aplicación, ejecutar el siguiente comando en la terminal:
+
+py -3.11 interfaz/app_kivy.py
+Estructura del proyecto
+interfaz/ → Contiene la interfaz gráfica (Kivy)
+
+codigo/ → Contiene la lógica y conexión a la base de datos
+
+capturas_ui/ → Imágenes del funcionamiento de la aplicación
+
+Capturas de la aplicación
+Las capturas del funcionamiento de la aplicación se encuentran en la carpeta:
+
+capturas_ui/
+Notas importantes
+La aplicación funciona únicamente si la base de datos está activa
+
+Se recomienda usar Python 3.11 para evitar errores con Kivy
+
+Los datos se almacenan en MySQL, no en archivos JSON
+
+Autor
 Esteban Bernal Monroy
 
-## Estado del proyecto
+Estado del proyecto
+Versión inicial funcional
 
-En desarrollo / Version inicial funcional
-
-## Organización
-
+Organización
 Politécnico Internacional
+
