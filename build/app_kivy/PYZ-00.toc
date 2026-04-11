@@ -1954,6 +1954,10 @@
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\__init__.py',
    'PYMODULE'),
+  ('mysql.ai',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\ai\\__init__.py',
+   'PYMODULE'),
   ('mysql.connector',
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\__init__.py',
@@ -1969,6 +1973,94 @@
   ('mysql.connector.abstracts',
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\abstracts.py',
+   'PYMODULE'),
+  ('mysql.connector.aio',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\__init__.py',
+   'PYMODULE'),
+  ('mysql.connector.aio._decorating',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\_decorating.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.abstracts',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\abstracts.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.authentication',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\authentication.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.charsets',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\charsets.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.connection',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\connection.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.cursor',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\cursor.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.logger',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\logger.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.network',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\network.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\__init__.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.authentication_kerberos_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\authentication_kerberos_client.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.authentication_ldap_sasl_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\authentication_ldap_sasl_client.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.authentication_oci_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\authentication_oci_client.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.authentication_openid_connect_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\authentication_openid_connect_client.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.authentication_webauthn_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\authentication_webauthn_client.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.caching_sha2_password',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\caching_sha2_password.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.mysql_clear_password',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\mysql_clear_password.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.mysql_native_password',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\mysql_native_password.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.plugins.sha256_password',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\plugins\\sha256_password.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.pooling',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\pooling.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.protocol',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\protocol.py',
+   'PYMODULE'),
+  ('mysql.connector.aio.utils',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\aio\\utils.py',
    'PYMODULE'),
   ('mysql.connector.authentication',
    'C:\\Users\\ESTEBAN '
@@ -2010,6 +2102,46 @@
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\dbapi.py',
    'PYMODULE'),
+  ('mysql.connector.django',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\__init__.py',
+   'PYMODULE'),
+  ('mysql.connector.django.base',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\base.py',
+   'PYMODULE'),
+  ('mysql.connector.django.client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\client.py',
+   'PYMODULE'),
+  ('mysql.connector.django.compiler',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\compiler.py',
+   'PYMODULE'),
+  ('mysql.connector.django.creation',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\creation.py',
+   'PYMODULE'),
+  ('mysql.connector.django.features',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\features.py',
+   'PYMODULE'),
+  ('mysql.connector.django.introspection',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\introspection.py',
+   'PYMODULE'),
+  ('mysql.connector.django.operations',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\operations.py',
+   'PYMODULE'),
+  ('mysql.connector.django.schema',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\schema.py',
+   'PYMODULE'),
+  ('mysql.connector.django.validation',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\django\\validation.py',
+   'PYMODULE'),
   ('mysql.connector.errorcode',
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\errorcode.py',
@@ -2021,6 +2153,14 @@
   ('mysql.connector.locales',
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\locales\\__init__.py',
+   'PYMODULE'),
+  ('mysql.connector.locales.eng',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\locales\\eng\\__init__.py',
+   'PYMODULE'),
+  ('mysql.connector.locales.eng.client_error',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\locales\\eng\\client_error.py',
    'PYMODULE'),
   ('mysql.connector.logger',
    'C:\\Users\\ESTEBAN '
@@ -2054,9 +2194,41 @@
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\__init__.py',
    'PYMODULE'),
+  ('mysql.connector.plugins.authentication_kerberos_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\authentication_kerberos_client.py',
+   'PYMODULE'),
+  ('mysql.connector.plugins.authentication_ldap_sasl_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\authentication_ldap_sasl_client.py',
+   'PYMODULE'),
+  ('mysql.connector.plugins.authentication_oci_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\authentication_oci_client.py',
+   'PYMODULE'),
+  ('mysql.connector.plugins.authentication_openid_connect_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\authentication_openid_connect_client.py',
+   'PYMODULE'),
+  ('mysql.connector.plugins.authentication_webauthn_client',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\authentication_webauthn_client.py',
+   'PYMODULE'),
   ('mysql.connector.plugins.caching_sha2_password',
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\caching_sha2_password.py',
+   'PYMODULE'),
+  ('mysql.connector.plugins.mysql_clear_password',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\mysql_clear_password.py',
+   'PYMODULE'),
+  ('mysql.connector.plugins.mysql_native_password',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\mysql_native_password.py',
+   'PYMODULE'),
+  ('mysql.connector.plugins.sha256_password',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\mysql\\connector\\plugins\\sha256_password.py',
    'PYMODULE'),
   ('mysql.connector.pooling',
    'C:\\Users\\ESTEBAN '
@@ -3533,6 +3705,14 @@
   ('ssl',
    'C:\\Users\\ESTEBAN '
    'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\ssl.py',
+   'PYMODULE'),
+  ('sspi',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\win32\\lib\\sspi.py',
+   'PYMODULE'),
+  ('sspicon',
+   'C:\\Users\\ESTEBAN '
+   'BERNAL\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\win32\\lib\\sspicon.py',
    'PYMODULE'),
   ('statistics',
    'C:\\Users\\ESTEBAN '

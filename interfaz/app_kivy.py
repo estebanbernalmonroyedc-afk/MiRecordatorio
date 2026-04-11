@@ -81,7 +81,12 @@ class Pantalla(BoxLayout):
         # ===== LISTA =====
         scroll = ScrollView(size_hint=(1, 1))
 
-        self.lista = GridLayout(cols=1, spacing=10, size_hint_y=None)
+        self.lista = GridLayout(
+            cols=1,
+            spacing=10,
+            size_hint_y=None,
+            padding=10
+        )
         self.lista.bind(minimum_height=self.lista.setter('height'))
 
         scroll.add_widget(self.lista)
@@ -111,55 +116,60 @@ class Pantalla(BoxLayout):
 
         for r in recordatorios:
 
+            # ===== CARD =====
             card = BoxLayout(
                 orientation="horizontal",
                 size_hint_y=None,
+                height=100,  # 🔥 ALTURA FIJA (soluciona el bug)
                 padding=10,
                 spacing=10
             )
-            card.bind(minimum_height=card.setter('height'))
 
             with card.canvas.before:
                 Color(1, 1, 1, 1)
-                card.rect = Rectangle(size=card.size, pos=card.pos)
-                card.bind(size=lambda inst, val: setattr(card.rect, 'size', val))
-                card.bind(pos=lambda inst, val: setattr(card.rect, 'pos', val))
+                rect = Rectangle(size=card.size, pos=card.pos)
 
+                def update_rect(instance, value):
+                    rect.pos = instance.pos
+                    rect.size = instance.size
+
+                card.bind(pos=update_rect, size=update_rect)
+
+            # ===== TEXTO =====
             texto = Label(
                 text=f"[b]{r['id']}. {r['titulo']}[/b]\n{r['descripcion']}\n{r['fecha']} {r['hora']}",
                 markup=True,
-                size_hint_x=1,
-                size_hint_y=None,
+                size_hint_x=0.7,
                 halign="left",
-                valign="top",
+                valign="middle",
                 color=(0, 0, 0, 1)
             )
-
-            texto.bind(
-                width=lambda inst, val: setattr(inst, 'text_size', (val, None)),
-                texture_size=lambda inst, val: setattr(inst, 'height', val[1])
-            )
+            texto.bind(size=lambda inst, val: setattr(inst, 'text_size', val))
 
             # ===== BOTONES =====
+            botones = BoxLayout(
+                orientation="vertical",
+                size_hint_x=0.3,
+                spacing=5
+            )
+
             btn_editar = Button(
-                text="editar",
-                size_hint=(None, 1),
-                width=70,
+                text="Editar",
                 background_color=(0.2, 0.8, 0.4, 1)
             )
             btn_editar.bind(on_press=lambda x, rid=r['id']: self.cargar_para_editar(rid))
 
             btn_eliminar = Button(
-                text="eliminar",
-                size_hint=(None, 1),
-                width=70,
+                text="Eliminar",
                 background_color=(1, 0.3, 0.3, 1)
             )
             btn_eliminar.bind(on_press=lambda x, rid=r['id']: self.confirmar_eliminacion_directa(rid))
 
+            botones.add_widget(btn_editar)
+            botones.add_widget(btn_eliminar)
+
             card.add_widget(texto)
-            card.add_widget(btn_editar)
-            card.add_widget(btn_eliminar)
+            card.add_widget(botones)
 
             self.lista.add_widget(card)
 
@@ -184,7 +194,7 @@ class Pantalla(BoxLayout):
                 self.mostrar_mensaje("Editando recordatorio...")
                 break
 
-    # ===== GUARDAR / EDITAR =====
+    # ===== GUARDAR =====
     def guardar(self, obj):
         titulo = self.titulo.text.strip()
         descripcion = self.descripcion.text.strip()
@@ -198,26 +208,22 @@ class Pantalla(BoxLayout):
             return
 
         try:
-            fecha_obj = datetime.datetime.strptime(fecha_input, "%d/%m/%Y")
-            fecha = fecha_obj.strftime("%Y-%m-%d")
+            fecha = datetime.datetime.strptime(fecha_input, "%d/%m/%Y").strftime("%Y-%m-%d")
         except:
             self.mostrar_mensaje("Fecha inválida", "error")
             return
 
         try:
             hora_input = hora_input.replace(".", "")
-
             if "am" in hora_input or "pm" in hora_input:
-                hora_obj = datetime.datetime.strptime(hora_input, "%I:%M %p")
+                hora = datetime.datetime.strptime(hora_input, "%I:%M %p").strftime("%H:%M")
             else:
-                hora_obj = datetime.datetime.strptime(hora_input, "%H:%M")
-
-            hora = hora_obj.strftime("%H:%M")
+                hora = datetime.datetime.strptime(hora_input, "%H:%M").strftime("%H:%M")
         except:
             self.mostrar_mensaje("Hora inválida", "error")
             return
 
-        if self.editando_id is not None:
+        if self.editando_id:
             editar_recordatorio(self.editando_id, titulo, descripcion, fecha, hora)
             self.mostrar_mensaje("Recordatorio actualizado")
             self.editando_id = None
