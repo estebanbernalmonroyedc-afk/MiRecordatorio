@@ -64,7 +64,7 @@ class Pantalla(BoxLayout):
         self.fecha = TextInput(hint_text="Fecha (DD/MM/YYYY)", multiline=False)
         form.add_widget(self.fecha)
 
-        self.hora = TextInput(hint_text="Hora (Ej: 3:30 pm o 15:30)", multiline=False)
+        self.hora = TextInput(hint_text="Hora (Ej: 15:30)", multiline=False)
         form.add_widget(self.hora)
 
         self.boton_guardar = Button(
@@ -116,11 +116,10 @@ class Pantalla(BoxLayout):
 
         for r in recordatorios:
 
-            # ===== CARD =====
             card = BoxLayout(
                 orientation="horizontal",
                 size_hint_y=None,
-                height=100,  # 🔥 ALTURA FIJA (soluciona el bug)
+                height=100,
                 padding=10,
                 spacing=10
             )
@@ -135,9 +134,14 @@ class Pantalla(BoxLayout):
 
                 card.bind(pos=update_rect, size=update_rect)
 
-            # ===== TEXTO =====
+            hora = r["hora"]
+            if hasattr(hora, "strftime"):
+                hora_texto = hora.strftime("%H:%M")
+            else:
+                hora_texto = str(hora)[:5]
+
             texto = Label(
-                text=f"[b]{r['id']}. {r['titulo']}[/b]\n{r['descripcion']}\n{r['fecha']} {r['hora']}",
+                text=f"[b]{r['id']}. {r['titulo']}[/b]\n{r['descripcion']}\n{r['fecha']} {hora_texto}",
                 markup=True,
                 size_hint_x=0.7,
                 halign="left",
@@ -146,23 +150,16 @@ class Pantalla(BoxLayout):
             )
             texto.bind(size=lambda inst, val: setattr(inst, 'text_size', val))
 
-            # ===== BOTONES =====
             botones = BoxLayout(
                 orientation="vertical",
                 size_hint_x=0.3,
                 spacing=5
             )
 
-            btn_editar = Button(
-                text="Editar",
-                background_color=(0.2, 0.8, 0.4, 1)
-            )
+            btn_editar = Button(text="Editar", background_color=(0.2, 0.8, 0.4, 1))
             btn_editar.bind(on_press=lambda x, rid=r['id']: self.cargar_para_editar(rid))
 
-            btn_eliminar = Button(
-                text="Eliminar",
-                background_color=(1, 0.3, 0.3, 1)
-            )
+            btn_eliminar = Button(text="Eliminar", background_color=(1, 0.3, 0.3, 1))
             btn_eliminar.bind(on_press=lambda x, rid=r['id']: self.confirmar_eliminacion_directa(rid))
 
             botones.add_widget(btn_editar)
@@ -173,7 +170,7 @@ class Pantalla(BoxLayout):
 
             self.lista.add_widget(card)
 
-    # ===== CARGAR PARA EDITAR =====
+    # ===== EDITAR =====
     def cargar_para_editar(self, id_recordatorio):
         recordatorios = cargar_recordatorios()
 
@@ -186,7 +183,11 @@ class Pantalla(BoxLayout):
                 fecha_obj = datetime.datetime.strptime(r["fecha"], "%Y-%m-%d")
                 self.fecha.text = fecha_obj.strftime("%d/%m/%Y")
 
-                self.hora.text = r["hora"]
+                hora = r["hora"]
+                if hasattr(hora, "strftime"):
+                    self.hora.text = hora.strftime("%H:%M")
+                else:
+                    self.hora.text = str(hora)[:5]
 
                 self.editando_id = id_recordatorio
                 self.boton_guardar.text = "Actualizar"
@@ -199,7 +200,7 @@ class Pantalla(BoxLayout):
         titulo = self.titulo.text.strip()
         descripcion = self.descripcion.text.strip()
         fecha_input = self.fecha.text.strip()
-        hora_input = self.hora.text.strip().lower()
+        hora_input = self.hora.text.strip()
 
         import datetime
 
@@ -214,11 +215,7 @@ class Pantalla(BoxLayout):
             return
 
         try:
-            hora_input = hora_input.replace(".", "")
-            if "am" in hora_input or "pm" in hora_input:
-                hora = datetime.datetime.strptime(hora_input, "%I:%M %p").strftime("%H:%M")
-            else:
-                hora = datetime.datetime.strptime(hora_input, "%H:%M").strftime("%H:%M")
+            hora = datetime.datetime.strptime(hora_input, "%H:%M").strftime("%H:%M")
         except:
             self.mostrar_mensaje("Hora inválida", "error")
             return

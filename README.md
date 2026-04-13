@@ -29,7 +29,7 @@ GitHub
 Requisitos del sistema
 Tener instalado Python 3.11
 
-Base de datos mirecordatorio creada en phpMyAdmin
+Base de datos mirecordatorio creada en phpMyAdmin (ya se tiene una creada en la carpeta docs)
 
 Tener instalado MySQL o XAMPP con el servicio activo
 
